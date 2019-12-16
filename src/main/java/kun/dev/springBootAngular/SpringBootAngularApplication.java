@@ -21,17 +21,12 @@ public class SpringBootAngularApplication {
 	}
 
 	@Bean
-	ApplicationRunner init(CarRepository repository) {
-		return args -> {
-			Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
-					"AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
-				Car car = new Car();
-				car.setName(name);
-				repository.save(car);
-			});
-			repository.findAll().forEach(System.out::println);
-		};
-	}
+	ApplicationRunner init(HeroRepository repository) {
+    return args -> Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
+        "AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV")
+        .map(Hero::new)
+        .forEach(repository::save);
+  }
 
 	@Bean
 	@SuppressWarnings("unchecked")
