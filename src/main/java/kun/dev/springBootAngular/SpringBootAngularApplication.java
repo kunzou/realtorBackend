@@ -1,8 +1,10 @@
 package kun.dev.springBootAngular;
 
+import kun.dev.springBootAngular.property.FileStorageProperties;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
@@ -14,6 +16,9 @@ import java.util.Collections;
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@EnableConfigurationProperties({
+		FileStorageProperties.class
+})
 public class SpringBootAngularApplication {
 
 	public static void main(String[] args) {

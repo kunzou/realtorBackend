@@ -16,6 +16,7 @@ public class Hero {
     @GeneratedValue
     private Long id;
     private @NonNull String name;
+    private String imgUrl;
 
     public Hero() {
     }
