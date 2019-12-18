@@ -1,27 +1,28 @@
-package kun.dev.springBootAngular;
+package kun.dev.springBootAngular.Domain;
 
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.awt.*;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Hero {
+public class Property {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private @NonNull String name;
+    private String address;
     private String imgUrl;
 
-    public Hero() {
+    public Property() {
     }
 
-    public Hero(@NonNull String name) {
+    public Property(@NonNull String name) {
         this.name = name;
     }
 }
