@@ -2,6 +2,7 @@ package kun.dev.springBootAngular.Domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.*;
@@ -21,7 +22,10 @@ public class Property {
     private @NonNull String address;
     private String primaryImgUrl;
     private List<String> imgUrls;
-    private HouseType houseType;
+    private String propertyType;
+    private String houseStatus;
+    private Integer yearBuilt;
+    private String description;
     private Integer numberOfRooms;
     private Integer numberOfWashrooms;
     private Double area;
@@ -29,11 +33,19 @@ public class Property {
     private BigDecimal finalPrice;
     private LocalDate onMarketSince;
     private LocalDate dealDate;
+    private boolean hide;
 
     public Property() {
     }
 
     public Property(@NonNull String address) {
         this.address = address;
+    }
+
+    public List<String> getImgUrls() {
+        if(imgUrls == null) {
+            imgUrls = new ArrayList<>();
+        }
+        return imgUrls;
     }
 }

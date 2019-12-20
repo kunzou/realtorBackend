@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 @CrossOrigin(origins = "http://localhost:4200")
 public interface PropertyRepository extends MongoRepository<Property, String> {
-  public Property findByName(String name);
+//  public Property findByName(String name);
 }

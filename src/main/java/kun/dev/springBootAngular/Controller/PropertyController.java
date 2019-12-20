@@ -24,39 +24,45 @@ public class PropertyController {
   @GetMapping("/properties")
   @CrossOrigin(origins = "http://localhost:4200")
   public Collection<Property> getProperties() {
-    return new ArrayList<>(repository.findAll());
+    logger.info("getProperties");
+    return repository.findAll();
   }
 
   @GetMapping("/properties/{id}")
   @CrossOrigin(origins = "http://localhost:4200")
   public Property getPropertyById(@PathVariable("id") String id) {
+    logger.info("getPropertyById");
     return repository.findById(id)
         .orElse(null);
   }
 
   @GetMapping("/properties/")
   @CrossOrigin(origins = "http://localhost:4200")
-  public Collection<Property> getPropertyByName(@RequestParam String name) {
+  public Collection<Property> getPropertyByAddress(@RequestParam String address) {
+    logger.info("getPropertyByAddress");
     return repository.findAll().stream()
-        .filter(property -> property.getName().contains(name.trim()))
+        .filter(property -> property.getAddress().contains(address.trim()))
         .collect(Collectors.toList());
   }
 
   @PostMapping("/properties")
   @CrossOrigin(origins = "http://localhost:4200")
   public Property addProperty(@RequestBody Property property) {
+    logger.info("addProperty" + property);
     return repository.save(property);
   }
 
   @PutMapping("/properties")
   @CrossOrigin(origins = "http://localhost:4200")
   public Property updateProperty(@RequestBody Property property) {
+    logger.info("updateProperty" + property);
     return repository.save(property);
   }
 
   @DeleteMapping("/properties/{id}")
   @CrossOrigin(origins = "http://localhost:4200")
   public ResponseEntity deleteProperty(@PathVariable("id") String id) {
+    logger.info("deleteProperty" + id);
     repository.deleteById(id);
     return ResponseEntity.ok().build();
   }
