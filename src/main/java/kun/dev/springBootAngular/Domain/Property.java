@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.maps.model.LatLng;
 import lombok.*;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
@@ -34,6 +34,8 @@ public class Property {
     private LocalDate onMarketSince;
     private LocalDate dealDate;
     private boolean hide;
+    private LatLng location;
+    private Long version;
 
     public Property() {
     }
