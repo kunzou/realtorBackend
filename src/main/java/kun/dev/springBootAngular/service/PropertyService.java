@@ -33,6 +33,7 @@ public class PropertyService {
 
   public Property addNewProperty(Property property) {
     property.setVersion(1L);
+    property.setHide(true);
     updateGeocode(property);
     return repository.save(property);
   }
@@ -59,9 +60,8 @@ public class PropertyService {
 
 
   void updateGeocode(Property property) {
-    Property persistedProperty = repository.findById(property.getId()).orElse(null);
-
-    if(persistedProperty == null || !StringUtils.equals(persistedProperty.getAddress(), property.getAddress())) {
+    if(property.getId() == null
+        || !StringUtils.equals(repository.findById(property.getId()).map(Property::getAddress).orElse(null), property.getAddress())) {
       property.setLocation(geocodeService.getGeocode(property.getAddress()));
     }
   }
