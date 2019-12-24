@@ -23,7 +23,7 @@ public class Property {
     private String primaryImgUrl;
     private List<String> imgUrls;
     private String propertyType;
-    private String houseStatus;
+    private String propertyStatus;
     private Integer yearBuilt;
     private String description;
     private Integer numberOfRooms;
@@ -36,6 +36,7 @@ public class Property {
     private boolean hide;
     private LatLng location;
     private Long version;
+    private String aboutPageComment;
 
     public Property() {
     }

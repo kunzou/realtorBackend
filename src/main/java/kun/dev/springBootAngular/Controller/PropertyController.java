@@ -26,6 +26,20 @@ public class PropertyController {
     return propertyService.findAll();
   }
 
+  @GetMapping("/properties/soldPurchased")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public Collection<Property> findSoldOrPurchased() {
+    logger.info("findSoldOrPurchased");
+    return propertyService.findSoldOrPurchased();
+  }
+
+  @GetMapping("/properties/sale")
+  @CrossOrigin(origins = "http://localhost:4200")
+  public Collection<Property> findSale() {
+    logger.info("findSale");
+    return propertyService.findSale();
+  }
+
   @GetMapping("/properties/{id}")
   @CrossOrigin(origins = "http://localhost:4200")
   public Property getPropertyById(@PathVariable("id") String id) {
