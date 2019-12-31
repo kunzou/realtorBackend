@@ -33,6 +33,7 @@ public class FileController {
   }
 
   @PostMapping("/uploadFile")
+  @CrossOrigin
   public Image uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
     logger.info("Received file: " + file.getOriginalFilename());
     return imgurService.uploadImage(file);
