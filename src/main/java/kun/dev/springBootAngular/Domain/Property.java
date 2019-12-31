@@ -2,8 +2,8 @@ package kun.dev.springBootAngular.Domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
 import com.google.maps.model.LatLng;
 import lombok.*;
@@ -17,38 +17,38 @@ import javax.persistence.Id;
 @ToString
 @EqualsAndHashCode
 public class Property {
-    @Id
-    private String id;
-    private @NonNull String address;
-    private String primaryImgUrl;
-    private List<String> imgUrls;
-    private String propertyType;
-    private String propertyStatus;
-    private Integer yearBuilt;
-    private String description;
-    private Integer numberOfRooms;
-    private Integer numberOfWashrooms;
-    private Double area;
-    private BigDecimal askingPrice;
-    private BigDecimal finalPrice;
-    private LocalDate onMarketSince;
-    private LocalDate dealDate;
-    private boolean hide;
-    private LatLng location;
-    private Long version;
-    private String aboutPageComment;
+  @Id
+  private String id;
+  private @NonNull String address;
+  private Image primaryImage;
+  private Collection<Image> additionalImages;
+  private String propertyType;
+  private String propertyStatus;
+  private Integer yearBuilt;
+  private String description;
+  private Integer numberOfRooms;
+  private Number numberOfWashrooms;
+  private Double area;
+  private BigDecimal askingPrice;
+  private BigDecimal finalPrice;
+  private LocalDate onMarketSince;
+  private LocalDate dealDate;
+  private boolean hide;
+  private LatLng location;
+  private Long version;
+  private String aboutPageComment;
 
-    public Property() {
-    }
+  public Property() {
+  }
 
-    public Property(@NonNull String address) {
-        this.address = address;
-    }
+  public Property(@NonNull String address) {
+    this.address = address;
+  }
 
-    public List<String> getImgUrls() {
-        if(imgUrls == null) {
-            imgUrls = new ArrayList<>();
-        }
-        return imgUrls;
+  public Collection<Image> getAdditionalImages() {
+    if(additionalImages == null) {
+      additionalImages = Collections.emptySet();
     }
+    return additionalImages;
+  }
 }

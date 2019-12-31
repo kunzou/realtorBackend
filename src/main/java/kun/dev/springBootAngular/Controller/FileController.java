@@ -1,7 +1,9 @@
 package kun.dev.springBootAngular.Controller;
 
+import kun.dev.springBootAngular.Domain.Image;
 import kun.dev.springBootAngular.payload.UploadFileResponse;
 import kun.dev.springBootAngular.service.FileStorageService;
+import kun.dev.springBootAngular.service.ImgurService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -23,32 +25,39 @@ public class FileController {
   private static final Logger logger = LoggerFactory.getLogger(PropertyController.class);
 
   private FileStorageService fileStorageService;
+  private ImgurService imgurService;
 
-  public FileController(FileStorageService fileStorageService) {
+  public FileController(FileStorageService fileStorageService, ImgurService imgurService) {
     this.fileStorageService = fileStorageService;
+    this.imgurService = imgurService;
   }
 
   @PostMapping("/uploadFile")
-  public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+  public Image uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
+    logger.info("Received file: " + file.getOriginalFilename());
+    return imgurService.uploadImage(file);
+  }
+
+  @PostMapping("/saveFile")
+  public UploadFileResponse saveFile(@RequestParam("file") MultipartFile file) {
     logger.info("Received file: " + file.getOriginalFilename());
     String fileName = fileStorageService.storeFile(file);
 
     String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-        .path("/downloadFile/")
-        .path(fileName)
-        .toUriString();
+      .path("/downloadFile/")
+      .path(fileName)
+      .toUriString();
 
     logger.info("File: " + file.getName() + "is available at" + fileDownloadUri);
 
     return new UploadFileResponse(fileName, fileDownloadUri,
-        file.getContentType(), file.getSize());
+      file.getContentType(), file.getSize());
   }
 
-  @PostMapping("/uploadMultipleFiles")
+  @PostMapping("/saveMultipleFiles")
   public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
-    return Arrays.asList(files)
-        .stream()
-        .map(file -> uploadFile(file))
+    return Arrays.stream(files)
+        .map(this::saveFile)
         .collect(Collectors.toList());
   }
 
