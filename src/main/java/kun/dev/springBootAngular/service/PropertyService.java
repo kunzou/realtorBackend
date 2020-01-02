@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
@@ -27,13 +26,20 @@ public class PropertyService {
     return repository.findById(id);
   }
 
+  public Collection<Property> findSale() {
+    return repository.findSaleProperties();
+  }
+
+  public Collection<Property> findSoldOrPurchased() {
+    return repository.findSoldOrPurchasedProperties();
+  }
+
   public void deleteById(String id) {
     repository.deleteById(id);
   }
 
   public Property addNewProperty(Property property) {
     property.setVersion(1L);
-    property.setHide(true);
     updateGeocode(property);
     return repository.save(property);
   }
@@ -41,27 +47,25 @@ public class PropertyService {
   public Property update(Property property) {
     Property persistedProperty = repository.findById(property.getId()).orElseThrow(RuntimeException::new); //todo error handling
 
-    if(persistedProperty.getVersion().equals(property.getVersion())) {
+//    if(persistedProperty.getVersion().equals(property.getVersion())) {
       updateGeocode(property);
       property.setVersion(property.getVersion()+1);
       property = repository.save(property);
-    } else {
-      throw new RuntimeException("Oops, refresh the page please"); //todo error handling
-    }
+//    } else {
+//      throw new RuntimeException("Oops, refresh the page please"); //todo error handling
+//    }
 
     return property;
   }
 
   public Collection<Property> findByAddress(String address) {
-    return repository.findAll().stream()
-        .filter(property -> property.getAddress().contains(address.trim()))
-        .collect(Collectors.toList());
+    String searchTerm = address.replace(" ", "").replaceAll("[A-Z|a-z|0-9]", "$0.*?");
+    return repository.findByAddress(searchTerm);
   }
 
 
   void updateGeocode(Property property) {
-    if(property.getId() == null
-        || !StringUtils.equals(repository.findById(property.getId()).map(Property::getAddress).orElse(null), property.getAddress())) {
+    if(property.getId() == null || !StringUtils.equals(repository.findById(property.getId()).map(Property::getAddress).orElse(null), property.getAddress())) {
       property.setLocation(geocodeService.getGeocode(property.getAddress()));
     }
   }
