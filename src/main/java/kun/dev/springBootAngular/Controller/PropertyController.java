@@ -20,28 +20,28 @@ public class PropertyController {
   }
 
   @GetMapping("/properties")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Collection<Property> getProperties() {
     logger.info("getProperties");
     return propertyService.findAll();
   }
 
   @GetMapping("/properties/soldPurchased")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Collection<Property> findSoldOrPurchased() {
     logger.info("findSoldOrPurchased");
     return propertyService.findSoldOrPurchased();
   }
 
   @GetMapping("/properties/sale")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Collection<Property> findSale() {
     logger.info("findSale");
     return propertyService.findSale();
   }
 
   @GetMapping("/properties/{id}")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Property getPropertyById(@PathVariable("id") String id) {
     logger.info("getPropertyById");
     return propertyService.findById(id)
@@ -49,28 +49,28 @@ public class PropertyController {
   }
 
   @GetMapping("/properties/")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Collection<Property> getPropertyByAddress(@RequestParam String address) {
     logger.info("getPropertyByAddress");
     return propertyService.findByAddress(address);
   }
 
   @PostMapping("/properties")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Property addProperty(@RequestBody Property property) {
     logger.info("addProperty" + property);
     return propertyService.addNewProperty(property);
   }
 
   @PutMapping("/properties")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public Property updateProperty(@RequestBody Property property) {
     logger.info("updateProperty" + property);
     return propertyService.update(property);
   }
 
   @DeleteMapping("/properties/{id}")
-  @CrossOrigin("https://peaceful-anchorage-60583.herokuapp.com/")
+  @CrossOrigin
   public ResponseEntity deleteProperty(@PathVariable("id") String id) {
     logger.info("deleteProperty" + id);
     propertyService.deleteById(id);
