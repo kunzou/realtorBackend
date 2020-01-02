@@ -81,6 +81,26 @@
       <artifactId>commons-io</artifactId>
       <version>2.6</version>
     </dependency>
+
+<!--    embedded mongodb start    -->
+    <dependency>
+      <groupId>de.flapdoodle.embed</groupId>
+      <artifactId>de.flapdoodle.embed.mongo</artifactId>
+      <version>1.50.5</version>
+    </dependency>
+    <dependency>
+      <groupId>cz.jirutka.spring</groupId>
+      <artifactId>embedmongo-spring</artifactId>
+      <version>RELEASE</version>
+    </dependency>
+<!--    embedded mongodb end    -->
+
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
 	</dependencies>
 
 	<build>
