@@ -13,7 +13,7 @@ public class GeocodeService {
     LatLng location = new LatLng();
 
     GeoApiContext context = new GeoApiContext.Builder()
-        .apiKey("AIzaSyBQtADp6_iewgAvgtmRu3YTx7eLHXxYQvQ")
+        .apiKey(System.getenv("GMAP_KEY"))
         .build();
     try {
       GeocodingResult[] results = GeocodingApi.newRequest(context).address(address + "Winnipeg, MB").await();
