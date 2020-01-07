@@ -22,6 +22,7 @@ public class Property {
   private @NonNull String address;
   private Image primaryImage;
   private Collection<Image> additionalImages;
+  private String source;
   private String propertyType;
   private String propertyStatus;
   private Integer yearBuilt;
@@ -37,6 +38,7 @@ public class Property {
   private LatLng location;
   private Long version;
   private String aboutPageComment;
+  private String youtubeLink;
 
   public Property() {
   }
