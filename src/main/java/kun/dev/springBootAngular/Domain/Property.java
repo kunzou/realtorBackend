@@ -39,6 +39,8 @@ public class Property {
   private Long version;
   private String aboutPageComment;
   private String youtubeLink;
+  private String tag;
+  private String neighborhood;
 
   public Property() {
   }
