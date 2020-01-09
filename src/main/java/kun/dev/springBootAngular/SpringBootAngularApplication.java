@@ -72,6 +72,9 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       property.setHide(false);
       property.setLocation(new LatLng(49.8131752, -97.0837596));
       property.setVersion(1L);
+      property.setTag("买我啊");
+      property.setYoutubeLink("https://www.youtube.com/watch?v=Xvm6LcWBzEM");
+      property.setNeighborhood("River Park South");
       repository.insert(property);
     }
   }
