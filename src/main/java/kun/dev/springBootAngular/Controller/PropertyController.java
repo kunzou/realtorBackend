@@ -2,8 +2,13 @@ package kun.dev.springBootAngular.Controller;
 
 import kun.dev.springBootAngular.Domain.Property;
 import kun.dev.springBootAngular.service.PropertyService;
+import kun.dev.springBootAngular.service.PropertyServiceMongoRepositoryImpl;
+import kun.dev.springBootAngular.service.PropertyServiceMongoTemplateImpl;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +18,7 @@ import java.util.Collection;
 public class PropertyController {
   private static final Logger logger = LoggerFactory.getLogger(PropertyController.class);
 
+  @Autowired
   private PropertyService propertyService;
 
   public PropertyController(PropertyService propertyService) {
@@ -44,8 +50,7 @@ public class PropertyController {
   @CrossOrigin
   public Property getPropertyById(@PathVariable("id") String id) {
     logger.info("getPropertyById");
-    return propertyService.findById(id)
-        .orElse(null);
+    return propertyService.findById(id);
   }
 
   @GetMapping("/properties/")

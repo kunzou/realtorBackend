@@ -1,6 +1,7 @@
 package kun.dev.springBootAngular.Domain;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
@@ -11,6 +12,8 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.data.mongodb.core.index.Indexed;
+
 @Entity
 @Getter
 @Setter
@@ -18,6 +21,7 @@ import javax.persistence.Id;
 @EqualsAndHashCode
 public class Property {
   @Id
+  @Indexed(unique = true)
   private String id;
   private @NonNull String address;
   private Image primaryImage;
@@ -32,8 +36,8 @@ public class Property {
   private Double area;
   private BigDecimal askingPrice;
   private BigDecimal finalPrice;
-  private LocalDate onMarketSince;
-  private LocalDate dealDate;
+  private Instant onMarketSince;
+  private Instant dealDate;
   private boolean hide;
   private LatLng location;
   private Long version;

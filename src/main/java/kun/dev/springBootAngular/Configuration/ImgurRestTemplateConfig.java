@@ -6,7 +6,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class ImgurRestTemplate {
+public class ImgurRestTemplateConfig {
   @Bean
   public RestTemplate getImgurRestTemplate() {
     SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
@@ -15,6 +15,4 @@ public class ImgurRestTemplate {
     RestTemplate restTemplate = new RestTemplate(factory);
     return restTemplate;
   }
-
-
 }
