@@ -3,12 +3,15 @@ package kun.dev.springBootAngular;
 import com.google.maps.model.LatLng;
 import kun.dev.springBootAngular.Domain.Image;
 import kun.dev.springBootAngular.Domain.Property;
+import kun.dev.springBootAngular.Domain.User;
 import kun.dev.springBootAngular.property.FileStorageProperties;
-import kun.dev.springBootAngular.repository.PropertyRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -18,10 +21,10 @@ import java.util.Arrays;
 		FileStorageProperties.class
 })
 public class SpringBootAngularApplication implements CommandLineRunner {
-  private PropertyRepository repository;
+  private MongoTemplate mongoTemplate;
 
-  public SpringBootAngularApplication(PropertyRepository repository) {
-    this.repository = repository;
+  public SpringBootAngularApplication(MongoTemplate mongoTemplate) {
+    this.mongoTemplate = mongoTemplate;
   }
 
   public static void main(String[] args) {
@@ -30,7 +33,35 @@ public class SpringBootAngularApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    if(!repository.findById("5e0a745327a44b424ec39797").isPresent()) {
+    addDefaultProperty();
+    addDefaultUser();
+  }
+
+  private void addDefaultUser() {
+    if(mongoTemplate.findAll(User.class).isEmpty()) {
+      User user = new User();
+      user.setOwner(true);
+      user.setPortrait(new Image("https://images.squarespace-cdn.com/content/v1/5d425c3accfbe50001c13b16/1565318289989-NHKHVZCS70SENY9W42RM/ke17ZwdGBToddI8pDm48kMZDWQmjgHJUcPr17npBZmRZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVGgxaxAvrH_Qq7-L1cbOGwu4e5jFLqLKU4CoUjr8FaVAh926scO3xePJoa6uVJa9B4/guant_20171111_D811996-removebg-preview.png"));
+      user.setSignature(new Image("https://images.squarespace-cdn.com/content/v1/5d425c3accfbe50001c13b16/1577427785882-KLNNU68VIVEGNS6CK7ZX/ke17ZwdGBToddI8pDm48kLh1saP75vC4rWxvy1v4RDRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzBZc9cn_KgttuoIZDpUtz9bBDeWYRuJFJdEJJCJYPN2DsVba-UqOHZg-79dIrT3ok/4818e8d2768148feb11621d3812cf047.PNG"));
+      user.setWeChatBarcode(new Image("https://images.squarespace-cdn.com/content/v1/5d425c3accfbe50001c13b16/1577427337333-TDOXON0QY83MGV4TCOY2/ke17ZwdGBToddI8pDm48kP06O0_IHyRXSOOiqwgWaApZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVEHLRkg2cosQUGLeQ33UzXdgIxPDaVwE3LlEpL74qP4JVW4jCyXLPvvdR287iymYt8/liudan+wechat.jpg"));
+      user.setDisplayName("刘丹");
+      user.setEmail("liudan_109@hotmail.com");
+      user.setPhoneNumber("204-228-4950");
+      user.setAboutMe("从业近10年，师从温尼伯华人地产经纪鼻祖卜涧淞，现供职于卜涧淞团队，已帮助近500位客户找到了他们心中满意的家。\n" +
+        "我目前正在考取评估师以及验房师资格证。 专注新建房以及开发。\n" +
+        "我从客户角度出发，聆听客户需求，为您找出最佳解决方案，提供良好的售前，售中以及售后服务。");
+      user.setAboutCompany("平方米地产\n" +
+        "温尼伯第一个华人地产经纪公司\n" +
+        "平方米地产- Square Meter Realty经纪公司 ，是一家提供温尼伯房地产销售，地产咨询，新经纪培训的地产经纪公司，由温尼伯资深房地产经纪人卜涧松创立。作为温尼伯唯一华人地产经纪公司，多数开心满意的客户是我们多年来收货的最宝贵财富。 我们追求的是团队精神，注重培训经纪的专业知识， 把专业，努力，负责任作为公司的服务宗旨，同时让更多的人理解我们的商业文化和规划。我们长期致力于招纳并培训出色的全方位地产经纪人。\n" +
+        "我们的追求 关注我们您将得到温尼伯最新最全的买房，卖房，投资，房屋养护知识。我们的专业团队将为你提供专业的服务。\n" +
+        "如有任何房屋买卖，房屋养护的问题都可以向我们咨询，我们会一一为你做出解答。我们期待着您的留言和来电！");
+      user.setVersion(1L);
+      mongoTemplate.insert(user);
+    }
+  }
+
+  private void addDefaultProperty() {
+    if(mongoTemplate.findOne(Query.query(Criteria.where("id").is("5e0a745327a44b424ec39797")), Property.class) == null) {
       Property property = new Property();
       property.setId("5e0a745327a44b424ec39797");
       property.setAddress("83 Wilford Close");
@@ -75,7 +106,7 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       property.setTag("买我啊");
       property.setYoutubeLink("https://www.youtube.com/watch?v=Xvm6LcWBzEM");
       property.setNeighborhood("River Park South");
-      repository.insert(property);
+      mongoTemplate.insert(property);
     }
   }
 }

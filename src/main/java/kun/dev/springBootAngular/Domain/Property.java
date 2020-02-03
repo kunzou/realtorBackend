@@ -45,6 +45,13 @@ public class Property {
   private String youtubeLink;
   private String tag;
   private String neighborhood;
+  private Integer levels;
+  private Integer listingNumber;
+  private BigDecimal propertyTax;
+  private String garageType;
+  private String basementCondition;
+  private String upgrades;
+  private Integer logArea;
 
   public Property() {
   }
