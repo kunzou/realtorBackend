@@ -23,11 +23,12 @@ public class User {
   private String email;
   private String homePage;
   private Image portrait;
-  private Image weChatBarcode;
+  private Image barcode;
   private Image signature;
   private String phoneNumber;
   private String aboutMe;
   private String aboutCompany;
+  private String aboutPageDescription;
   private boolean owner;
   private Long version;
 }
