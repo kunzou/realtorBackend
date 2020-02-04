@@ -51,7 +51,7 @@ public class Property {
   private String garageType;
   private String basementCondition;
   private String upgrades;
-  private Integer logArea;
+  private Integer lotArea;
 
   public Property() {
   }

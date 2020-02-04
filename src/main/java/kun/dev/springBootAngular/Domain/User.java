@@ -19,16 +19,16 @@ public class User {
   private String id;
   private String firstName;
   private String lastName;
-  private String displayName;
+  private Description displayName;
   private String email;
   private String homePage;
   private Image portrait;
   private Image barcode;
   private Image signature;
   private String phoneNumber;
-  private String aboutMe;
-  private String aboutCompany;
-  private String aboutPageDescription;
+  private Description aboutMe;
+  private Description aboutCompany;
+  private Description aboutPageDescription;
   private boolean owner;
   private Long version;
 }
