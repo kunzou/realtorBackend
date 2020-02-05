@@ -47,17 +47,25 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       user.setSignature(new Image("https://images.squarespace-cdn.com/content/v1/5d425c3accfbe50001c13b16/1577427785882-KLNNU68VIVEGNS6CK7ZX/ke17ZwdGBToddI8pDm48kLh1saP75vC4rWxvy1v4RDRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzBZc9cn_KgttuoIZDpUtz9bBDeWYRuJFJdEJJCJYPN2DsVba-UqOHZg-79dIrT3ok/4818e8d2768148feb11621d3812cf047.PNG"));
       user.setBarcode(new Image("https://images.squarespace-cdn.com/content/v1/5d425c3accfbe50001c13b16/1577427337333-TDOXON0QY83MGV4TCOY2/ke17ZwdGBToddI8pDm48kP06O0_IHyRXSOOiqwgWaApZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVEHLRkg2cosQUGLeQ33UzXdgIxPDaVwE3LlEpL74qP4JVW4jCyXLPvvdR287iymYt8/liudan+wechat.jpg"));
 
-      user.setDisplayName(new Description("刘丹"));
+      user.setDisplayName(new Description("刘丹", "Dan Liu"));
       user.setEmail("liudan_109@hotmail.com");
       user.setPhoneNumber("204-228-4950");
       user.setAboutMe(new Description("从业近10年，师从温尼伯华人地产经纪鼻祖卜涧淞，现供职于卜涧淞团队，已帮助近500位客户找到了他们心中满意的家。\n" +
         "我目前正在考取评估师以及验房师资格证。 专注新建房以及开发。\n" +
-        "我从客户角度出发，聆听客户需求，为您找出最佳解决方案，提供良好的售前，售中以及售后服务。"));
-      user.setAboutCompany(new Description("平方米地产\n" +
-        "温尼伯第一个华人地产经纪公司\n" +
-        "平方米地产- Square Meter Realty经纪公司 ，是一家提供温尼伯房地产销售，地产咨询，新经纪培训的地产经纪公司，由温尼伯资深房地产经纪人卜涧松创立。作为温尼伯唯一华人地产经纪公司，多数开心满意的客户是我们多年来收货的最宝贵财富。 我们追求的是团队精神，注重培训经纪的专业知识， 把专业，努力，负责任作为公司的服务宗旨，同时让更多的人理解我们的商业文化和规划。我们长期致力于招纳并培训出色的全方位地产经纪人。\n" +
-        "我们的追求 关注我们您将得到温尼伯最新最全的买房，卖房，投资，房屋养护知识。我们的专业团队将为你提供专业的服务。\n" +
-        "如有任何房屋买卖，房屋养护的问题都可以向我们咨询，我们会一一为你做出解答。我们期待着您的留言和来电！"));
+        "我从客户角度出发，聆听客户需求，为您找出最佳解决方案，提供良好的售前，售中以及售后服务。", "How to translate your application\n" +
+        "The JSON translation file\n" +
+        "\n" +
+        "cheat sheet\n" +
+        "\n" +
+        "Don't make these 7 mistakes we made when we started with ngx-translate!\n" +
+        "\n" +
+        "Learn more in our newsletter and get our free ngx-translate cheat-sheet: All you need to know on a single page.\n" +
+        "\n" +
+        "GET IT!\n" +
+        "\n" +
+        "Each language is stored in a separate .json file. Let's create the JSON file for the English translation: assets/i18n/en.json.\n" +
+        "\n" +
+        "ngx-translate can read 2 JSON formats:"));
       user.setAboutPageDescription(new Description("                                福居温尼伯\n" +
         "                          fujuwinnipeg.com\n" +
         "从业近10年，师从温尼伯华人地产经纪鼻祖卜涧淞，现供职于卜涧淞团队，已帮助近500位客户找到了他们心中满意的家。\n" +
@@ -75,7 +83,42 @@ public class SpringBootAngularApplication implements CommandLineRunner {
         "温尼伯第一个华人地产经纪公司\n" +
         "平方米地产- Square Meter Realty经纪公司 ，是一家提供温尼伯房地产销售，地产咨询，新经纪培训的地产经纪公司，由温尼伯资深房地产经纪人卜涧松创立。作为温尼伯唯一华人地产经纪公司，多数开心满意的客户是我们多年来收货的最宝贵财富。 我们追求的是团队精神，注重培训经纪的专业知识， 把专业，努力，负责任作为公司的服务宗旨，同时让更多的人理解我们的商业文化和规划。我们长期致力于招纳并培训出色的全方位地产经纪人。\n" +
         "我们的追求 关注我们您将得到温尼伯最新最全的买房，卖房，投资，房屋养护知识。我们的专业团队将为你提供专业的服务。\n" +
-        "如有任何房屋买卖，房屋养护的问题都可以向我们咨询，我们会一一为你做出解答。我们期待着您的留言和来电！"));
+        "如有任何房屋买卖，房屋养护的问题都可以向我们咨询，我们会一一为你做出解答。我们期待着您的留言和来电！",
+        "import translate service and add in constructor\n" +
+          "\n" +
+          "contructor(private translate: TranslateService){\n" +
+          "}\n" +
+          "I find it use this.translate.currentLang to get the current language\n" +
+          "\n" +
+          "shareedit\n" +
+          "\n" +
+          "edited Nov 9 '19 at 8:57\n" +
+          "\n" +
+          "\n" +
+          "\n" +
+          "Giovanni Dias\n" +
+          "\n" +
+          "881313 bronze badges\n" +
+          "\n" +
+          "answered Mar 9 '17 at 15:45\n" +
+          "\n" +
+          "\n" +
+          "\n" +
+          "Allen\n" +
+          "\n" +
+          "1,05711 gold badge77 silver badges1515 bronze badges\n" +
+          "\n" +
+          "how to access this translate.currentLang ? – godblessstrawberry Mar 26 '18 at 12:33\n" +
+          "\n" +
+          "6\n" +
+          "\n" +
+          "@godblessstrawberry just use this.translateService.currentLang, dont forget to add the TranslateService in construtor – Allen Mar 28 '18 at 9:18\n" +
+          "\n" +
+          "Is there a way to get an observable of the current language? – Mateja Petrovic Mar 14 '19 at 12:57\n" +
+          "\n" +
+          "1\n" +
+          "\n" +
+          "@MatejaPetrović en.. I think current language is not a observable like property, but you can subscribe the onLangChange of translate service. – Allen Mar 15 '19 at 6:40"));
       user.setVersion(1L);
       mongoTemplate.insert(user);
     }

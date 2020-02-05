@@ -16,7 +16,8 @@ public class Description {
 	public Description() {
 	}
 
-	public Description(String chinese) {
+	public Description(String chinese, String english) {
 		this.chinese = chinese;
+		this.english = english;
 	}
 }
