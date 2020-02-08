@@ -159,7 +159,29 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       property.setPropertyType("House");
       property.setPropertyStatus("Sale");
       property.setYearBuilt(2003);
-      property.setDescription("<p><img alt=\"\" src=\"https://static1.squarespace.com/static/5d425c3accfbe50001c13b16/5de5ec77483f966c5c8de16d/5de361735043fe7ceb3c5004/1577946685619/snapshot20191201004756.jpg?format=500w\" style=\"height:281px; width:500px\" /><br /> &nbsp;</p> <table border=\"0\" cellpadding=\"1\" cellspacing=\"1\" style=\"width:900px\"> <tbody> <tr> <td>Welcome to this gorgeous former gold award show home built in 2016. You will fall in love of this home once you step into it. It is impressed with a stunning living room with incredible big windows, built in speakers and double side fireplace. Modern open concept kitchen with high end appliances, quartz counter tops, luxury plumbing fixtures and backsplash. Dinning room beside kitchen and access to the large deck in the back yard. Three bedrooms and laundry room on second floor. Master bedroom with custom designed closet and a 5 piece ensuite with tub and glass shower. double sinks. Steel beams, High Efficiency Furnace and tons more! Walking distance to the new gym in bridgwater centre. Call to schedule your showing today!</td> </tr> </tbody> </table> <p>&nbsp;</p>");
+      property.setDescription(new Description("所谓“转阴后复发”的问题，实际上是病毒核酸检测灵敏度的问题，需要病毒到达一定的量，核酸检测才会显示阳性。\n" +
+          "\n" +
+          "严格来说，“复发”应该是在临床症状完全消除之后。如果患者只是核酸检测转阴，但是还有发烧、呼吸窘迫等问题，并不能说明已经治愈，如果此时病情恶化，不能说是复发，只能说是“病情反复”。\n" +
+          "\n" +
+          "查证者：一节生姜 | 宾夕法尼亚大学医学院病理及实验医药系研究副教授\n" +
+          "\n" +
+          "1. 核酸检测存在假阴性的情况\n" +
+          "\n" +
+          "在普通人的印象中，只要有病毒感染，核酸检测就应该是阳性；如果检查是阴性，说明没有新型冠状病毒感染。\n" +
+          "\n" +
+          "但这是理想中的检查状况，现实不一定完全吻合。\n" +
+          "\n" +
+          "新型冠状病毒的核酸检测主要通过实时荧光RT-PCR来进行。首先要提取咽拭子中的RNA，然后经过酶促化学反应，扩增目标基因，才能检测出样品中是否有病毒基因。在这个过程中，如果一开始样品中的病毒拷贝太少，或者扩增时效率受到影响，都会影响检查结果。\n" +
+          "\n" +
+          "危重症医学专家、中国医学科学院院长王辰院士在2月5日接受央视采访时表示，新型冠状病毒感染的核酸检测 “只有30%～50%的阳性率”。也就是说，即便是确诊的病例中，也有不少是核酸检测没检测出来的，也就是所谓的假阴性。\n" +
+          "\n" +
+          "在试剂核酸检测操作中，一般是连续进行两次检查，只要有一次是阳性，就可以确诊；而需要两次结果都是阴性，才判定为阴性。通过这样的操作，可以把阳性率提高一些，把假阴性率降低。\n" +
+          "\n" +
+          "武汉病毒所之前对7个患者进行过核酸检测，第一次检测是2019年12月30日，6个咽拭子样本都是阳性的，但是到1月10日检测的时候，全都变为阴性了。但是，在1月13日的时候，这6个患者中还有5人有发烧症状，只有一人治愈出院 [1]。所以，在多数情况下，核酸检测变阴，可能说明病毒量减少，属于好转，并不等于病毒就没有了。\n" +
+          "\n" +
+          "所谓“转阴后复发”的问题，实际上是因为病毒量减少，核酸检测的灵敏度不够，检查结果显示阴性，但是随着病情进展，病毒量增加，再做核酸检测，结果就变阳性，感觉是“复发”了。\n" +
+          "\n" +
+          "但严格来说，“复发”应该是在临床症状完全消除之后。如果患者只是核酸检测转阴，但是还有发烧、呼吸窘迫等问题，并不能说明已经治愈。如果此时病情恶化，不能说是复发，只能说是“病情反复”。", "\"<p><img alt=\\\"\\\" src=\\\"https://static1.squarespace.com/static/5d425c3accfbe50001c13b16/5de5ec77483f966c5c8de16d/5de361735043fe7ceb3c5004/1577946685619/snapshot20191201004756.jpg?format=500w\\\" style=\\\"height:281px; width:500px\\\" /><br /> &nbsp;</p> <table border=\\\"0\\\" cellpadding=\\\"1\\\" cellspacing=\\\"1\\\" style=\\\"width:900px\\\"> <tbody> <tr> <td>Welcome to this gorgeous former gold award show home built in 2016. You will fall in love of this home once you step into it. It is impressed with a stunning living room with incredible big windows, built in speakers and double side fireplace. Modern open concept kitchen with high end appliances, quartz counter tops, luxury plumbing fixtures and backsplash. Dinning room beside kitchen and access to the large deck in the back yard. Three bedrooms and laundry room on second floor. Master bedroom with custom designed closet and a 5 piece ensuite with tub and glass shower. double sinks. Steel beams, High Efficiency Furnace and tons more! Walking distance to the new gym in bridgwater centre. Call to schedule your showing today!</td> </tr> </tbody> </table> <p>&nbsp;</p>\""));
       property.setNumberOfRooms(6);
       property.setNumberOfWashrooms(3);
       property.setArea(1850.0);

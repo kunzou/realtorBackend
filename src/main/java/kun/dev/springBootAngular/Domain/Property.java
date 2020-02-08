@@ -30,7 +30,7 @@ public class Property {
   private String propertyType;
   private String propertyStatus;
   private Integer yearBuilt;
-  private String description;
+  private Description description;
   private Integer numberOfRooms;
   private Number numberOfWashrooms;
   private Double area;
