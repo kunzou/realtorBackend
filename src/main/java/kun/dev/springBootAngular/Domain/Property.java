@@ -50,7 +50,7 @@ public class Property {
   private BigDecimal propertyTax;
   private String garageType;
   private String basementCondition;
-  private String upgrades;
+  private Collection<String> upgrades;
   private Integer lotArea;
 
   public Property() {
