@@ -125,7 +125,7 @@ public class SpringBootAngularApplication implements CommandLineRunner {
   }
 
   private void addDefaultProperty() {
-    if(mongoTemplate.findOne(Query.query(Criteria.where("id").is("5e0a745327a44b424ec39797")), Property.class) == null) {
+    if(mongoTemplate.findAll(Property.class).isEmpty()) {
       Property property = new Property();
       property.setId("5e0a745327a44b424ec39797");
       property.setAddress("83 Wilford Close");
@@ -156,7 +156,7 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       Image imagej = new Image();imagej.setLink("https://i.imgur.com/27oG1To.jpg");
       Image imagek = new Image();imagek.setLink("https://i.imgur.com/v5SCv0r.jpg");
       property.setAdditionalImages(Arrays.asList(image1,image2,image3,image4,image5,image6,image7,image8,image9,imagea,imageb,imagec,imaged,imagee,imagef,imageg,imageh,imagei,imagej,imagek));
-      property.setPropertyType("House");
+      property.setPropertyType("propertyType.house");
       property.setPropertyStatus("Sale");
       property.setYearBuilt(2003);
       property.setDescription(new Description("所谓“转阴后复发”的问题，实际上是病毒核酸检测灵敏度的问题，需要病毒到达一定的量，核酸检测才会显示阳性。\n" +
