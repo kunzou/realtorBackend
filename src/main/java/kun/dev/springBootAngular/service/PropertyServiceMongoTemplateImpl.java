@@ -3,6 +3,7 @@ package kun.dev.springBootAngular.service;
 import java.util.Collection;
 import java.util.Optional;
 
+import kun.dev.springBootAngular.Domain.Description;
 import kun.dev.springBootAngular.Domain.Property;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Primary;
@@ -57,6 +58,8 @@ public class PropertyServiceMongoTemplateImpl implements PropertyService {
   public Property addNewProperty(Property property) {
     property.setVersion(1L);
     updateGeocode(property);
+    property.setTag(new Description());
+    property.setDescription(new Description());
     return mongoTemplate.save(property);
   }
 

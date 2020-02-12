@@ -12,8 +12,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -189,7 +187,7 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       property.setHide(false);
       property.setLocation(new LatLng(49.8131752, -97.0837596));
       property.setVersion(1L);
-      property.setTag("买我啊");
+      property.setTag(new Description("买我啊!", "Buy me!"));
       property.setYoutubeLink("https://www.youtube.com/watch?v=Xvm6LcWBzEM");
       property.setNeighborhood("River Park South");
       mongoTemplate.insert(property);

@@ -26,6 +26,8 @@ public class User {
   private Image barcode;
   private Image signature;
   private String phoneNumber;
+  private String officePhoneNumber;
+  private String faxNumber;
   private Description aboutMe;
   private Description aboutCompany;
   private Description aboutPageDescription;

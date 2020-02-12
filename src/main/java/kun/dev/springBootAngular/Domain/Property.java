@@ -2,7 +2,6 @@ package kun.dev.springBootAngular.Domain;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -43,15 +42,21 @@ public class Property {
   private Long version;
   private String aboutPageComment;
   private String youtubeLink;
-  private String tag;
+  private Description tag;
   private String neighborhood;
   private Integer levels;
   private Integer listingNumber;
   private BigDecimal propertyTax;
-  private String garageType;
+  private String garage;
   private String basementCondition;
   private Collection<String> upgrades;
   private Integer lotArea;
+  private String propertyStyle;
+  private String garageSize;
+  private String usage;
+  private String holdType;
+  private Collection<String> remaining;
+  private Collection<Highlight> features;
 
   public Property() {
   }
@@ -65,5 +70,19 @@ public class Property {
       additionalImages = Collections.emptySet();
     }
     return additionalImages;
+  }
+
+  public Collection<Highlight> getFeatures() {
+    if(features == null) {
+      features = Collections.emptySet();
+    }
+    return features;
+  }
+
+  public Collection<String> getRemaining() {
+    if(remaining == null) {
+      remaining = Collections.emptySet();
+    }
+    return remaining;
   }
 }
