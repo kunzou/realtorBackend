@@ -33,7 +33,12 @@ public class User {
   private Description aboutPageDescription;
   private boolean owner;
   private Long version;
+  private String facebook;
+  private String instagram;
+  private String youtube;
 }
+
+
 
 
 
