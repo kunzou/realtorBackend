@@ -33,7 +33,7 @@ public class Property {
   private Description description;
   private Integer numberOfRooms;
   private Number numberOfWashrooms;
-  private Double area;
+  private Number area;
   private BigDecimal askingPrice;
   private BigDecimal finalPrice;
   private LocalDateTime onMarketSince;

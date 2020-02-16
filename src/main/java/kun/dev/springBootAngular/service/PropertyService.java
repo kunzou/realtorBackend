@@ -16,7 +16,6 @@ public interface PropertyService {
 	Property addNewProperty(Property property);
 	Property update(Property property);
 	Collection<Property> findByAddress(String address);
-  Collection<Property> getOpenHouses();
   Collection<PropertyCard> getPropertyCards();
   Collection<PropertyCard> getOpenHouseCards();
 }

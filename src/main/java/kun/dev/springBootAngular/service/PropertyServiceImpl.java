@@ -90,11 +90,6 @@ public class PropertyServiceImpl implements PropertyService {
   }
 
   @Override
-  public Collection<Property> getOpenHouses() {
-    return findSale().stream().filter(Property::hasOpenHouse).collect(Collectors.toList());
-  }
-
-  @Override
   public Collection<PropertyCard> getPropertyCards() {
     return findSale().stream()
       .map(this::toPropertyCard)
@@ -122,6 +117,7 @@ public class PropertyServiceImpl implements PropertyService {
     propertyCard.setNumberOfWashrooms(property.getNumberOfWashrooms());
     propertyCard.setLocation(property.getLocation());
     propertyCard.setOpenHouseDate(property.getOpenHouseDate());
+    propertyCard.setArea(property.getArea());
     return propertyCard;
   }
 

@@ -22,6 +22,7 @@ public class PropertyCard {
   private Number askingPrice;
   private Number numberOfRooms;
   private Number numberOfWashrooms;
+  private Number area;
   private LocalDateTime openHouseDate;
   private LatLng location;
 }
