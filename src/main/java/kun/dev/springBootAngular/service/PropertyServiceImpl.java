@@ -1,10 +1,14 @@
 package kun.dev.springBootAngular.service;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import kun.dev.springBootAngular.Domain.Description;
 import kun.dev.springBootAngular.Domain.Property;
+import kun.dev.springBootAngular.Domain.PropertyCard;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -14,11 +18,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Primary
-public class PropertyServiceMongoTemplateImpl implements PropertyService {
+public class PropertyServiceImpl implements PropertyService {
   private GeocodeService geocodeService;
   private MongoTemplate mongoTemplate;
 
-  public PropertyServiceMongoTemplateImpl(GeocodeService geocodeService, MongoTemplate mongoTemplate) {
+  public PropertyServiceImpl(GeocodeService geocodeService, MongoTemplate mongoTemplate) {
     this.geocodeService = geocodeService;
     this.mongoTemplate = mongoTemplate;
   }
@@ -68,10 +72,10 @@ public class PropertyServiceMongoTemplateImpl implements PropertyService {
     Property persistedProperty = findById(property.getId()); //todo error handling
 
 //    if(persistedProperty.getVersion().equals(property.getVersion())) {
-      updateGeocode(property);
-      property.setVersion(property.getVersion()+1);
+    updateGeocode(property);
+    property.setVersion(property.getVersion()+1);
 //      property = repository.save(property);
-      property = mongoTemplate.save(property);
+    property = mongoTemplate.save(property);
 //    } else {
 //      throw new RuntimeException("Oops, refresh the page please"); //todo error handling
 //    }
@@ -85,9 +89,46 @@ public class PropertyServiceMongoTemplateImpl implements PropertyService {
     return mongoTemplate.find(new Query(Criteria.where("address").regex(searchTerm, "i")), Property.class);
   }
 
+  @Override
+  public Collection<Property> getOpenHouses() {
+    return findSale().stream().filter(Property::hasOpenHouse).collect(Collectors.toList());
+  }
+
+  @Override
+  public Collection<PropertyCard> getPropertyCards() {
+    return findSale().stream()
+      .map(this::toPropertyCard)
+      .collect(Collectors.toList());
+  }
+
+  @Override
+  public Collection<PropertyCard> getOpenHouseCards() {
+    return findSale().stream()
+      .filter(Property::hasOpenHouse)
+      .map(this::toPropertyCard)
+      .collect(Collectors.toList());
+  }
+
+  PropertyCard toPropertyCard(Property property) {
+    PropertyCard propertyCard = new PropertyCard();
+    propertyCard.setId(property.getId());
+    propertyCard.setPrimaryImage(property.getPrimaryImage());
+    propertyCard.setTag(property.getTag());
+    propertyCard.setAddress(property.getAddress());
+    propertyCard.setNeighborhood(property.getNeighborhood());
+    propertyCard.setPropertyType(property.getPropertyType());
+    propertyCard.setAskingPrice(property.getAskingPrice());
+    propertyCard.setNumberOfRooms(property.getNumberOfRooms());
+    propertyCard.setNumberOfWashrooms(property.getNumberOfWashrooms());
+    propertyCard.setLocation(property.getLocation());
+    propertyCard.setOpenHouseDate(property.getOpenHouseDate());
+    return propertyCard;
+  }
+
   void updateGeocode(Property property) {
     if(property.getId() == null || !StringUtils.equals(Optional.ofNullable(findById(property.getId())).map(Property::getAddress).orElse(null), property.getAddress())) {
       property.setLocation(geocodeService.getGeocode(property.getAddress()));
     }
   }
+
 }

@@ -1,7 +1,8 @@
 package kun.dev.springBootAngular.Domain;
 
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -35,8 +36,8 @@ public class Property {
   private Double area;
   private BigDecimal askingPrice;
   private BigDecimal finalPrice;
-  private Instant onMarketSince;
-  private Instant dealDate;
+  private LocalDateTime onMarketSince;
+  private LocalDateTime dealDate;
   private boolean hide;
   private LatLng location;
   private Long version;
@@ -57,6 +58,7 @@ public class Property {
   private String holdType;
   private Collection<String> remaining;
   private Collection<Highlight> features;
+  private LocalDateTime openHouseDate;
 
   public Property() {
   }
@@ -85,4 +87,9 @@ public class Property {
     }
     return remaining;
   }
+
+  public boolean hasOpenHouse() {
+    return openHouseDate != null && !openHouseDate.toLocalDate().isBefore(LocalDate.now());
+  }
 }
+

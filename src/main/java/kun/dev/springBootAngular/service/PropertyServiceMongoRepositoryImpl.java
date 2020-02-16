@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.Optional;
 
-@Service
-public class PropertyServiceMongoRepositoryImpl implements PropertyService{
+//@Service
+public class PropertyServiceMongoRepositoryImpl {
   private GeocodeService geocodeService;
   private PropertyRepository repository;
 
@@ -18,39 +18,39 @@ public class PropertyServiceMongoRepositoryImpl implements PropertyService{
     this.repository = repository;
   }
 
-  @Override
+//  @Override
   public Collection<Property> findAll() {
     return repository.findAll();
   }
 
-  @Override
+//  @Override
   public Property findById(String id) {
     return repository.findById(id).orElse(null);
   }
 
-  @Override
+//  @Override
   public Collection<Property> findSale() {
     return repository.findSaleProperties();
   }
 
-  @Override
+//  @Override
   public Collection<Property> findSoldOrPurchased() {
     return repository.findSoldOrPurchasedProperties();
   }
 
-  @Override
+//  @Override
   public void deleteById(String id) {
     repository.deleteById(id);
   }
 
-  @Override
+//  @Override
   public Property addNewProperty(Property property) {
     property.setVersion(1L);
     updateGeocode(property);
     return repository.save(property);
   }
 
-  @Override
+//  @Override
   public Property update(Property property) {
     Property persistedProperty = repository.findById(property.getId()).orElseThrow(RuntimeException::new); //todo error handling
 
@@ -65,7 +65,7 @@ public class PropertyServiceMongoRepositoryImpl implements PropertyService{
     return property;
   }
 
-  @Override
+//  @Override
   public Collection<Property> findByAddress(String address) {
     String searchTerm = address.replace(" ", "").replaceAll("[A-Z|a-z|0-9]", "$0.*?");
     return repository.findByAddress(searchTerm);
