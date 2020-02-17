@@ -93,7 +93,7 @@ public class PropertyServiceImpl implements PropertyService {
   public Collection<PropertyCard> getPropertyCards() {
     return findSale().stream()
       .map(this::toPropertyCard)
-      .collect(Collectors.toList());
+      .collect(Collectors.toSet());
   }
 
   @Override
@@ -101,7 +101,7 @@ public class PropertyServiceImpl implements PropertyService {
     return findSale().stream()
       .filter(Property::hasOpenHouse)
       .map(this::toPropertyCard)
-      .collect(Collectors.toList());
+      .collect(Collectors.toSet());
   }
 
   PropertyCard toPropertyCard(Property property) {
