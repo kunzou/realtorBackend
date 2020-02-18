@@ -20,6 +20,14 @@ public class BlogCard {
   private Description brief;
   private Description title;
   private LocalDateTime date;
-  private Image coverageImage;
+  private Image coverImage;
   private int viewCount;
+
+  public Image getCoverImage() {
+    if(coverImage == null) {
+      coverImage = new Image();
+    }
+    return coverImage;
+  }
+
 }

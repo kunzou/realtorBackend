@@ -5,6 +5,7 @@ import kun.dev.springBootAngular.Domain.BlogCard;
 import kun.dev.springBootAngular.Domain.Description;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -66,7 +67,9 @@ public class BlogService {
   }
 
   public Collection<BlogCard> getBlogCards() {
-    return mongoTemplate.findAll(Blog.class).stream()
+    Query query = new Query();
+    query.with(new Sort(Sort.Direction.DESC, "date"));
+    return mongoTemplate.find(query, Blog.class).stream()
       .map(this::toCard)
       .collect(Collectors.toList());
   }
@@ -78,7 +81,7 @@ public class BlogService {
     blogCard.setBrief(blog.getBrief());
     blogCard.setTitle(blog.getTitle());
     blogCard.setDate(blog.getDate());
-    blogCard.setCoverageImage(blog.getCoverImage());
+    blogCard.setCoverImage(blog.getCoverImage());
     blogCard.setViewCount(blog.getViewCount());
     return blogCard;
   }

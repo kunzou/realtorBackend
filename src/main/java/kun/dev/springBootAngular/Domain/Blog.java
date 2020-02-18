@@ -34,6 +34,13 @@ public class Blog {
   private int viewCount;
   private Collection<Image> images;
 
+  public Image getCoverImage() {
+    if(coverImage == null) {
+      coverImage = new Image();
+    }
+    return coverImage;
+  }
+
   public Collection<Image> getImages() {
     if(images == null) {
       images = new ArrayList<>();
