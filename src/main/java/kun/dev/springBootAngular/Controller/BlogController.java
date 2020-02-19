@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/blogs")
@@ -23,7 +24,7 @@ public class BlogController {
   }
 
   @GetMapping("")
-  public Collection<BlogCard> getAllBlogs() {
+  public List<BlogCard> getAllBlogs() {
     return blogService.getBlogCards();
   }
 

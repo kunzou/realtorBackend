@@ -29,6 +29,7 @@ public class Blog {
   private LocalDateTime date;
   private LocalDateTime updatedDate;
   private String videoLink;
+  private Description videoCaption;
   private Long version;
   private Image coverImage;
   private int viewCount;
@@ -46,5 +47,12 @@ public class Blog {
       images = new ArrayList<>();
     }
     return images;
+  }
+
+  public Description getVideoCaption() {
+    if(videoCaption == null) {
+      videoCaption = new Description();
+    }
+    return videoCaption;
   }
 }

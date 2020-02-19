@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -66,7 +67,7 @@ public class BlogService {
       .collect(Collectors.toSet());
   }
 
-  public Collection<BlogCard> getBlogCards() {
+  public List<BlogCard> getBlogCards() {
     Query query = new Query();
     query.with(new Sort(Sort.Direction.DESC, "date"));
     return mongoTemplate.find(query, Blog.class).stream()
