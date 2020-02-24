@@ -1,5 +1,7 @@
 package kun.dev.springBootAngular.Domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +21,12 @@ public class Description {
 	public Description(String chinese, String english) {
 		this.chinese = chinese;
 		this.english = english;
+	}
+
+	public String getEnglish() {
+		if(StringUtils.isEmpty(english)) {
+			english = chinese;
+		}
+		return english;
 	}
 }
