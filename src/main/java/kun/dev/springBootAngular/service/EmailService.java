@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -14,22 +15,12 @@ import java.util.Properties;
 public class EmailService {
   private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
-  public boolean sendEmail(EmailDetail emailDetail) {
-    boolean success = true;
-
-    try {
-      Transport.send(createMessage(emailDetail));
-      logger.info("Email sent: "+emailDetail.toString());
-
-    } catch (Exception e) {
-      success = false;
-      logger.error("Error: ", e);
-    }
-
-    return success;
+  public void sendEmail(EmailDetail emailDetail) throws MessagingException {
+    Transport.send(createMessage(emailDetail));
+    logger.info("Email sent: "+emailDetail.toString());
   }
 
-  private Message createMessage(EmailDetail emailDetail) throws Exception {
+  private Message createMessage(EmailDetail emailDetail) throws MessagingException {
     final String username = System.getenv("EMAIL_USERNAME");
     final String password = System.getenv("EMAIL_PASSWORD");
 
