@@ -30,8 +30,8 @@ public class NewsLetterController {
 		this.newsLetterService = newsLetterService;
 	}
 
-	@PostMapping("/subscribe")
-  public ResponseEntity addProperty(@RequestBody EmailSubscription emailSubscription) {
+	@PostMapping("/add")
+  public ResponseEntity newSubscription(@RequestBody EmailSubscription emailSubscription) {
     newsLetterService.addToNewsLetterSubscription(emailSubscription);
     return ResponseEntity.ok().build();
   }
@@ -45,5 +45,17 @@ public class NewsLetterController {
 		} else {
 			return new ResponseEntity("Unsubscrible not successful. Please contact ... for unsubscription", new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+  }
+
+	@PostMapping("/pushProperty")
+  public ResponseEntity pushProperty(@RequestBody String id) {
+//    newsLetterService.addToNewsLetterSubscription(emailSubscription);
+    return ResponseEntity.ok().build();
+  }
+
+	@PostMapping("/pushBlog")
+  public ResponseEntity pushBlog(@RequestBody String id) {
+//    newsLetterService.addToNewsLetterSubscription(emailSubscription);
+    return ResponseEntity.ok().build();
   }
 }

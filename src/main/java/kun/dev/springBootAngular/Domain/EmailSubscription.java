@@ -21,6 +21,8 @@ public class EmailSubscription {
 	private String id;
   private String email;
   private String languagePreference;
+  private boolean property;
+  private boolean blog;
 
 	public EmailSubscription() {
 	}

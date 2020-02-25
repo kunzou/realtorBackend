@@ -19,7 +19,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Property {
+public class Property implements Emailable {
   @Id
   @Indexed(unique = true)
   private String id;

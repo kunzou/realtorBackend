@@ -18,7 +18,7 @@ import java.util.Collection;
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Blog {
+public class Blog implements Emailable {
   @Id
   @Indexed(unique = true)
   private String id;
