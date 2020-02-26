@@ -1,0 +1,187 @@
+{
+    "home": {
+        "home": "首页",
+        "properties": "房产列表",
+        "dashboard": "后台",
+        "about": "关于我",
+        "blog": "聃哥说房",
+        "openHouse": "周末开放",
+        "service": "聃哥服务",
+        "propertySource": "房源",
+        "fuju": "福居温尼伯",
+        "squareMeters": "平方米地产",
+        "showAll": "显示全部"
+    },    
+    "properties": {
+      "property-list": "最近房源"
+    },
+    "about": {
+      "recentDeals": "我的近期业绩"
+    },
+    "property": {
+        "type": "房型",
+        "year": "建筑年份",
+        "price": "售价",
+        "rooms": "房间数",
+        "bathrooms": "卫生间数",
+        "garage": "车库",
+        "garageSize": "车库面积",
+        "basementCondition": "地下室",
+        "listingNumber": "列表号",
+        "levels": "层数",
+        "onMarketSince": "上市日期",
+        "area": "室内面积",
+        "lotArea": "占地面积",
+        "upgrades": "升级",
+        "garages": "车位",
+        "propertyStyle": "户型",
+        "propertyType": "房型",
+        "remaining": "留下的东西",
+        "usage": "用途",
+        "holdType": "性质",
+        "emailAddress": "邮箱地址",
+        "phoneNumber": "联系电话",      
+        "sendEmailTitle": "获取更多信息",
+        "email": {
+          "from": "姓名",
+          "number": "联系电话",
+          "email": "邮箱地址",
+          "message": "您的信息"
+        },
+        "sendMessage": "发送邮件",
+        "yourMessage": "您的问题"
+    },
+    "footer": {
+      "contactUs": "联系我们",
+      "askMe": "请教聃哥",
+      "yourName": "您的名字",
+      "contactMethod": "联系方式",
+      "yourQuestion": "您的问题"
+    },
+    "openHouse": {
+      "title": "周末开放"
+    },
+    "service": {
+      "sale": "卖方服务",
+      "purchase": "买方服务"
+    },
+    "propertyType": {
+      "house": "独立屋",
+      "townhouse": "排屋",
+      "condo": "公寓",
+      "sideBySide": "双拼"
+    },
+    "basement": {
+      "full": "全装修",
+      "half": "半装修",
+      "no": "没装修",
+      "na": "没有"
+    },
+    "upgrade": {
+      "kichenCounterTop": "厨房台面",
+      "hardwoodFloor": "实木地板",
+      "laminateFloor": "复合木地板",
+      "washroom": "洗手间",
+      "washroomCounterTop": "洗手间台面"
+    },
+    "propertyStyle": {
+      "bunglow": "平层",
+      "oneAndHalf": "平层加阁楼",
+      "raisedBungalow": "抬高式平层",
+      "splitTwoLevel": "错二层",
+      "splitThreeLevel": "错三层",
+      "splitFourLevel": "错四层:",
+      "twoStory": "双层",
+      "twoAndHalf": "双层加阁楼"
+    },
+    "holdType": {
+      "freehold": "独立产权",
+      "condo": "共享产权",
+      "leasehold": "土地租赁"
+    },
+    "usage": {
+      "residential": "民宅",
+      "commercial": "商用",
+      "mixedUse": "商住两用"
+    },
+    "garage": {
+      "singleAttached": "连体单车库",
+      "doubleAttached": "连体双车库",
+      "tripleAttached": "连体三车库",
+      "multipleAttached": "连体多车库",
+      "singleDetached": "分体单车库",
+      "doubleDetached": "分体双车库",
+      "tripleDetached": "分体三车库",
+      "multipleDetached": "分体多车库",
+      "noGarage": "无车库",
+      "outdoor": "室外车位",
+      "undergroundParking": "地下停车位"      
+    },
+    "remaining": {
+      "stove": "炉子",
+      "refrigerator": "冰箱",
+      "washer": "洗衣机",
+      "dryer": "烘干机",
+      "dishwasher": "洗碗机",
+      "garageDoorOpener": "车库门遥控器",
+      "windowCovering": "窗帘",
+      "blinds": "百叶窗",
+      "microwave": "微波炉",
+      "other": "其他"      
+    },
+    "feature": {
+      "laminate": "复合地板",
+      "hardwood": "实木地板",
+      "counterTops": "台面",
+      "hrv": "中央换气",
+      "centralAC": "中央空调",
+      "highEfficiencyFurnace": "高效锅炉",
+      "electricFireplace": "电壁炉",
+      "gasFireplace": "燃气壁炉",
+      "fullyFinishedBasement": "地下室全装",
+      "partialFinishedBasement": "地下室半装",
+      "reModelledKitchen": "翻新厨房",
+      "reModelledBathroom": "翻新浴室",
+      "geoThermalFurnace": "地热锅炉",
+      "dualClimateControl": "分区控制",
+      "structuralFloorinBasement": "地下室悬空地面",
+      "sunRoom": "阳光房",
+      "sumpPump": "抽水泵",
+      "centralVac": "中央吸尘",
+      "alarmSystem": "警报系统",
+      "undergroundSprinkler": "自动喷淋",
+      "remodeledInterior": "室内翻新",
+      "newerPaint": "新刷漆",
+      "buildInSpeakers": "中央音响",
+      "deck": "后院露台",
+      "hotTub": "热水浴",
+      "twoKitchen": "双厨房",
+      "doubleMasterBedrooms": "双主卧",
+      "separateEntrancetoBasement": "地下室分门出入",
+      "newWindowsDoors": "新门窗",
+      "newerWindowsDoors": "部分新门窗",
+      "newShingle": "新房顶",
+      "newsShingle": "较新房顶",
+      "newerDriveway": "较新车道",
+      "insulatedGarage": "车库保温"      
+    },
+    "blog": {
+      "category": {
+        "buyHouse": "买房",
+        "sellHouse": "卖房",
+        "maintenance": "维护",
+        "vlog": "视频",
+        "all": "全部",
+        "hot": "近期热点"
+      }
+    },
+    "label": {
+      "all": "全部",
+      "category": "文章分类",
+      "feelingLucky": "随便看看",
+      "subscribe": "订阅",
+      "subscribeProperty": "订阅房产信息",
+      "subscribeBlog": "订阅博客"
+    }
+  }
+  
