@@ -1,0 +1,187 @@
+{
+    "home": {
+        "home": "HOME",
+        "properties": "PROPERTIES",
+        "dashboard": "DASHBOARD",
+        "about": "ABOUT ME",
+        "blog": "BLOG",
+        "openHouse": "OPEN HOUSE",
+        "service": "SERVICE",
+        "propertySource": "Source",
+        "fuju": "Fuju Winnipeg",
+        "squareMeters": "Square Meters",
+        "showAll": "All"
+    },
+    "properties": {
+      "property-list": "Properties list"
+    },
+    "about": {
+      "recentDeals": "My Recent Deals"
+    },
+    "property": {
+        "type": "Type",
+        "year": "Year",
+        "price": "Price",
+        "rooms": "Rooms",
+        "bathrooms": "Bathrooms",
+        "garage": "Garage",
+        "garageSize": "Garage Size",
+        "basementCondition": "Basement",
+        "listingNumber": "List #",
+        "levels": "Levels",
+        "onMarketSince": "Listing Date",
+        "area": "Area",
+        "lotArea": "Lot Size",
+        "upgrades": "Upgrades",
+        "garages": "Garage",
+        "propertyStyle": "Style",
+        "propertyType": "Type",
+        "remaining": "Remaining",
+        "usage": "Usage",
+        "holdType": "Hold Type",
+        "sendEmailTitle": "Ask me about this property",
+        "emailAddress": "Email Address",
+        "phoneNumber": "Phone Number",
+        "email": {
+          "from": "Your Name",
+          "number": "Your Number",
+          "email": "Email Address",
+          "message": "Your Message"
+        },
+        "sendMessage": "Send Message",
+        "yourMessage": "Your Message"
+    },
+    "footer": {
+      "contactUs": "Contact Us",
+      "askMe": "Ask Me",
+      "yourName": "Your Name",
+      "contactMethod": "Contact Method",
+      "yourQuestion": "Your Question"
+    },    
+    "openHouse": {
+      "title": "OPEN HOUSE"
+    },
+    "service": {
+      "sale": "I am Selling a Property",
+      "purchase": "I am Buying a Property"
+    },    
+    "propertyType": {
+      "house": "House",
+      "townhouse": "Townhouse",
+      "condo": "Condo",
+      "sideBySide": "Side by Side"      
+    },
+    "basement": {
+      "full": "Finished",
+      "half": "Unfinished",
+      "no": "Insulated",
+      "na": "No basement"
+    },
+    "upgrade": {
+      "kichenCounterTop": "Kichen Countertop",
+      "hardwoodFloor": "Hardwood Floor",
+      "laminateFloor": "Laminate Floor",
+      "washroom": "Washroom",
+      "washroomCounterTop": "Washroom Countertop"
+    },
+    "propertyStyle": {
+      "bunglow": "Bunglow",
+      "oneAndHalf": "1+1/2",
+      "raisedBungalow": "Raised Bungalow",
+      "splitTwoLevel": "Split Two-level",
+      "splitThreeLevel": "Split Three-level",
+      "splitFourLevel": "Split Four-level",
+      "twoStory": "Two Story",
+      "twoAndHalf": "2+1/2"
+    },
+    "holdType": {
+      "freehold": "Freehold",
+      "condo": "Condo",
+      "leasehold": "Leasehold"
+    },
+    "usage": {
+      "residential": "Residential",
+      "commercial": "Commercial",
+      "mixedUse": "Mixed Use"
+    },
+    "garage": {
+      "singleAttached": "Single Attached",
+      "doubleAttached": "Double Attached",
+      "tripleAttached": "Triple Attached",
+      "multipleAttached": "Multiple Attached",
+      "singleDetached": "Single Detached",
+      "doubleDetached": "Double Detached",
+      "tripleDetached": "Triple Detached",
+      "multipleDetached": "Multiple Detached",
+      "noGarage": "No Garage",
+      "outdoor": "Outdoor",
+      "undergroundParking": "Underground Parking"   
+    },
+    "remaining": {
+      "stove": "Stove",
+      "refrigerator": "Refrigerator",
+      "washer": "Washer",
+      "dryer": "Dryer",
+      "dishwasher": "Dishwasher",
+      "garageDoorOpener": "Garage Door Opener",
+      "windowCovering": " Window Covering",
+      "blinds": "Blinds",
+      "microwave": "Micro Wave",
+      "other": "Other"      
+    },
+    "feature": {
+      "laminate": "Laminate",
+      "hardwood": "Hardwood",
+      "counterTops": "Counter tops",
+      "hrv": "HRV",
+      "centralAC": "Central AC",
+      "highEfficiencyFurnace": "High Efficiency Furnace",
+      "electricFireplace": "Electric Fireplace",
+      "gasFireplace": "Gas Fireplace",
+      "fullyFinishedBasement": "Fully Finished Basement",
+      "partialFinishedBasement": "Partial Finished Basement",
+      "reModelledKitchen": "Re-Modelled Kitchen",
+      "reModelledBathroom": "Re-Modelled Bathroom",
+      "geoThermalFurnace": "Geo-Thermal Furnace",
+      "dualClimateControl": "Dual-Climate Control",
+      "structuralFloorinBasement": "Structural Floor in Basement",
+      "sunRoom": "Sun Room",
+      "sumpPump": "Sump Pump",
+      "centralVac": "Central Vac",
+      "alarmSystem": "Alarm System",
+      "undergroundSprinkler": "Underground Sprinkler",
+      "remodeledInterior": "Remodeled Interior",
+      "newerPaint": "Newer Paint",
+      "buildInSpeakers": "Build-in Speakers",
+      "deck": "Deck",
+      "hotTub": "Hot Tub",
+      "twoKitchen": "Two Kitchen",
+      "doubleMasterBedrooms": "Double Master Bedrooms",
+      "separateEntrancetoBasement": "Separate Entrance to Basement",
+      "newWindowsDoors": "New Windows / Doors",
+      "newerWindowsDoors": "Newer Windows / Doors",
+      "newShingle": "New Shingle",
+      "newsShingle": "News Shingle",
+      "newerDriveway": "Newer Driveway",
+      "insulatedGarage": "Insulated Garage"    
+    },
+    "blog": {
+      "category": {
+        "buyHouse": "Buy Property",
+        "sellHouse": "Sell Property",
+        "maintenance": "Maintenance",
+        "vlog": "Vlog",
+        "all": "All",
+        "hot": "What's Hot"
+      }
+    },
+    "label": {
+      "all": "All",
+      "category": "Category",
+      "feelingLucky": "I'm Feeling Lucky",
+      "subscribe": "Subscribe",
+      "subscribeProperty": "Subscribe Properties",
+      "subscribeBlog": "Subscribe Blogs"      
+    }
+  }
+  
