@@ -18,4 +18,5 @@ public interface PropertyService {
 	Collection<Property> findByAddress(String address);
   Collection<PropertyCard> getPropertyCards();
   Collection<PropertyCard> getOpenHouseCards();
+  Collection<PropertyCard> getHomePageCards();
 }

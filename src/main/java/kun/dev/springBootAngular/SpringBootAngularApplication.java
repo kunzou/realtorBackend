@@ -5,6 +5,7 @@ import com.google.maps.model.LatLng;
 import kun.dev.springBootAngular.Domain.Description;
 import kun.dev.springBootAngular.Domain.Image;
 import kun.dev.springBootAngular.Domain.Property;
+import kun.dev.springBootAngular.Domain.PropertyStatus;
 import kun.dev.springBootAngular.Domain.User;
 import kun.dev.springBootAngular.property.FileStorageProperties;
 import org.springframework.boot.CommandLineRunner;
@@ -48,23 +49,7 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       user.setDisplayName(new Description("刘丹", "Dan Liu"));
       user.setEmail("liudan_109@hotmail.com");
       user.setPhoneNumber("204-228-4950");
-      user.setAboutMe(new Description("从业近10年，师从温尼伯华人地产经纪鼻祖卜涧淞，现供职于卜涧淞团队，已帮助近500位客户找到了他们心中满意的家。\n" +
-        "我目前正在考取评估师以及验房师资格证。 专注新建房以及开发。\n" +
-        "我从客户角度出发，聆听客户需求，为您找出最佳解决方案，提供良好的售前，售中以及售后服务。", "How to translate your application\n" +
-        "The JSON translation file\n" +
-        "\n" +
-        "cheat sheet\n" +
-        "\n" +
-        "Don't make these 7 mistakes we made when we started with ngx-translate!\n" +
-        "\n" +
-        "Learn more in our newsletter and get our free ngx-translate cheat-sheet: All you need to know on a single page.\n" +
-        "\n" +
-        "GET IT!\n" +
-        "\n" +
-        "Each language is stored in a separate .json file. Let's create the JSON file for the English translation: assets/i18n/en.json.\n" +
-        "\n" +
-        "ngx-translate can read 2 JSON formats:"));
-      user.setAboutPageDescription(new Description("                                福居温尼伯\n" +
+      user.setAboutMe(new Description("                                福居温尼伯\n" +
         "                          fujuwinnipeg.com\n" +
         "从业近10年，师从温尼伯华人地产经纪鼻祖卜涧淞，现供职于卜涧淞团队，已帮助近500位客户找到了他们心中满意的家。\n" +
         "我目前正在考取评估师以及验房师资格证。 专注新建房以及开发。\n" +
@@ -155,7 +140,8 @@ public class SpringBootAngularApplication implements CommandLineRunner {
       Image imagek = new Image();imagek.setLink("https://i.imgur.com/v5SCv0r.jpg");
       property.setAdditionalImages(Arrays.asList(image1,image2,image3,image4,image5,image6,image7,image8,image9,imagea,imageb,imagec,imaged,imagee,imagef,imageg,imageh,imagei,imagej,imagek));
       property.setPropertyType("propertyType.house");
-      property.setPropertyStatus("Sale");
+//      property.setPropertyStatus("Sale");
+      property.setPropertyStatus(PropertyStatus.SALE.toString());
       property.setYearBuilt(2003);
       property.setDescription(new Description("所谓“转阴后复发”的问题，实际上是病毒核酸检测灵敏度的问题，需要病毒到达一定的量，核酸检测才会显示阳性。\n" +
           "\n" +

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 
 import com.google.maps.model.LatLng;
 import lombok.*;
@@ -30,6 +31,7 @@ public class Property {
   private String propertyType;
   private String propertyStatus;
   private Integer yearBuilt;
+  private Description brief;
   private Description description;
   private Integer numberOfRooms;
   private Number numberOfWashrooms;
@@ -39,6 +41,7 @@ public class Property {
   private LocalDateTime onMarketSince;
   private LocalDateTime dealDate;
   private boolean hide;
+  private boolean displayedOnHomePage;
   private LatLng location;
   private Long version;
   private String aboutPageComment;
@@ -59,6 +62,8 @@ public class Property {
   private Collection<String> remaining;
   private Collection<Highlight> features;
   private LocalDateTime openHouseDate;
+
+  public static final Comparator<Property> HOME_PAGE_LIST_COMPARATOR = Comparator.comparing(Property::getPropertyStatus).thenComparing(Property::getOnMarketSince, Comparator.reverseOrder());
 
   public Property() {
   }
@@ -88,8 +93,20 @@ public class Property {
     return remaining;
   }
 
+  public Description getBrief() {
+    return brief == null? new Description():brief;
+  }
+
+  public Description getDescription() {
+    return description == null? new Description():description;
+  }
+
+  public Description getTag() {
+    return tag == null? new Description():tag;
+  }
+
   public boolean hasOpenHouse() {
-    return openHouseDate != null && !openHouseDate.toLocalDate().isBefore(LocalDate.now());
+    return PropertyStatus.SALE.toString().equals(propertyStatus) && openHouseDate != null && !openHouseDate.toLocalDate().isBefore(LocalDate.now());
   }
 }
 

@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Collection;
 
 @Entity
 @Getter
@@ -29,13 +28,29 @@ public class User {
   private String officePhoneNumber;
   private String faxNumber;
   private Description aboutMe;
-  private Description aboutCompany;
-  private Description aboutPageDescription;
+  private Description purchaseService;
+  private Description saleService;
   private boolean owner;
   private Long version;
   private String facebook;
   private String instagram;
   private String youtube;
+
+  public Description getDisplayName() {
+    return displayName == null? new Description():displayName;
+  }
+
+  public Description getAboutMe() {
+    return aboutMe == null? new Description():aboutMe;
+  }
+
+  public Description getPurchaseService() {
+    return purchaseService == null? new Description():purchaseService;
+  }
+
+  public Description getSaleService() {
+    return saleService == null? new Description():saleService;
+  }
 }
 
 

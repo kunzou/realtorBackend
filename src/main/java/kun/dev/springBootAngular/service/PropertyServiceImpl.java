@@ -1,14 +1,15 @@
 package kun.dev.springBootAngular.service;
 
-import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import kun.dev.springBootAngular.Domain.Description;
 import kun.dev.springBootAngular.Domain.Property;
 import kun.dev.springBootAngular.Domain.PropertyCard;
+import kun.dev.springBootAngular.Domain.PropertyStatus;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -40,7 +41,7 @@ public class PropertyServiceImpl implements PropertyService {
   @Override
   public Collection<Property> findSale() {
     Query query = new Query();
-    query.addCriteria(Criteria.where("propertyStatus").is("Sale"));
+    query.addCriteria(Criteria.where("propertyStatus").is(PropertyStatus.SALE.toString()));
     query.addCriteria(Criteria.where("hide").is(false));
     return mongoTemplate.find(query, Property.class);
   }
@@ -48,7 +49,7 @@ public class PropertyServiceImpl implements PropertyService {
   @Override
   public Collection<Property> findSoldOrPurchased() {
     Query query = new Query();
-    query.addCriteria(Criteria.where("propertyStatus").in("Sold", "Purchased"));
+    query.addCriteria(Criteria.where("propertyStatus").in(PropertyStatus.SOLD.toString(), PropertyStatus.PURCHASED.toString()));
     query.addCriteria(Criteria.where("hide").is(false));
     return mongoTemplate.find(query, Property.class);
   }
@@ -62,8 +63,6 @@ public class PropertyServiceImpl implements PropertyService {
   public Property addNewProperty(Property property) {
     property.setVersion(1L);
     updateGeocode(property);
-    property.setTag(new Description());
-    property.setDescription(new Description());
     return mongoTemplate.save(property);
   }
 
@@ -104,6 +103,17 @@ public class PropertyServiceImpl implements PropertyService {
       .collect(Collectors.toSet());
   }
 
+  @Override
+  public Collection<PropertyCard> getHomePageCards() {
+    Query query = new Query();
+    query.addCriteria(Criteria.where("propertyStatus").in(PropertyStatus.SOLD.toString(), PropertyStatus.SALE.toString()));
+    query.addCriteria(Criteria.where("displayedOnHomePage").is(true));
+    return mongoTemplate.find(query, Property.class).stream()
+        .sorted(Property.HOME_PAGE_LIST_COMPARATOR)
+        .map(this::toPropertyCard)
+        .collect(Collectors.toList());
+  }
+
   PropertyCard toPropertyCard(Property property) {
     PropertyCard propertyCard = new PropertyCard();
     propertyCard.setId(property.getId());
@@ -118,6 +128,10 @@ public class PropertyServiceImpl implements PropertyService {
     propertyCard.setLocation(property.getLocation());
     propertyCard.setOpenHouseDate(property.getOpenHouseDate());
     propertyCard.setArea(property.getArea());
+    propertyCard.setBrief(property.getBrief());
+    if(property.getPropertyStatus().equals(PropertyStatus.SOLD.toString())) {
+      propertyCard.setTag(new Description("卖了!", "SOLD!"));
+    }
     return propertyCard;
   }
 

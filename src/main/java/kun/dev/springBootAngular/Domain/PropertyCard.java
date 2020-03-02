@@ -16,6 +16,7 @@ public class PropertyCard {
   private String id;
   private Image primaryImage;
   private Description tag;
+  private Description brief;
   private String address;
   private String neighborhood;
   private String propertyType;
