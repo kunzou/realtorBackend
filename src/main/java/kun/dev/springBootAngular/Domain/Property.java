@@ -63,7 +63,7 @@ public class Property {
   private Collection<Highlight> features;
   private LocalDateTime openHouseDate;
 
-  public static final Comparator<Property> HOME_PAGE_LIST_COMPARATOR = Comparator.comparing(Property::getPropertyStatus).thenComparing(Property::getOnMarketSince, Comparator.reverseOrder());
+  public static final Comparator<Property> HOME_PAGE_LIST_COMPARATOR = Comparator.comparing(Property::getPropertyStatus).thenComparing(Property::getOnMarketSince, Comparator.nullsLast(Comparator.reverseOrder()));
 
   public Property() {
   }
