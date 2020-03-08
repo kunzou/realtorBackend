@@ -24,7 +24,6 @@ public class EmailController {
   }
 
   @PostMapping("/api/sendEmail")
-  @CrossOrigin
   public ResponseEntity sendEmail(@RequestBody EmailDetail emailDetail) {
     try {
       emailService.sendEmail(emailDetail);

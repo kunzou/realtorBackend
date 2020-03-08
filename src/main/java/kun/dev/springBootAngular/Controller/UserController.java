@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/users")
 public class UserController {
   private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -19,14 +18,12 @@ public class UserController {
   }
 
   @GetMapping("/owner")
-  @CrossOrigin
   public User getOwner() {
     logger.info("getOwner");
     return userService.getOwner();
   }
 
   @PutMapping("")
-  @CrossOrigin
   public User updateProperty(@RequestBody User user) {
     logger.info("updateProperty" + user);
     return userService.update(user);

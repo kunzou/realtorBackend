@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-//@CrossOrigin
 @RequestMapping("/api/properties")
 public class PropertyController {
   private static final Logger logger = LoggerFactory.getLogger(PropertyController.class);
