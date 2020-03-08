@@ -21,15 +21,15 @@ import java.util.Arrays;
 @EnableConfigurationProperties({
 		FileStorageProperties.class
 })
-public class SpringBootAngularApplication implements CommandLineRunner {
+public class Realtor implements CommandLineRunner {
   private MongoTemplate mongoTemplate;
 
-  public SpringBootAngularApplication(MongoTemplate mongoTemplate) {
+  public Realtor(MongoTemplate mongoTemplate) {
     this.mongoTemplate = mongoTemplate;
   }
 
   public static void main(String[] args) {
-	  SpringApplication.run(SpringBootAngularApplication.class, args);
+	  SpringApplication.run(Realtor.class, args);
 	}
 
   @Override
