@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@RequestMapping("/blogs")
+@RequestMapping("/api/blogs")
 @CrossOrigin
 public class BlogController {
   private static final Logger logger = LoggerFactory.getLogger(BlogController.class);

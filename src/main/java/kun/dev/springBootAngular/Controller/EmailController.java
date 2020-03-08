@@ -23,7 +23,7 @@ public class EmailController {
     this.emailService = emailService;
   }
 
-  @PostMapping("/sendEmail")
+  @PostMapping("/api/sendEmail")
   @CrossOrigin
   public ResponseEntity sendEmail(@RequestBody EmailDetail emailDetail) {
     try {
