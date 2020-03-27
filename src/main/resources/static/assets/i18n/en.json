@@ -162,7 +162,11 @@
       "newShingle": "New Shingle",
       "newsShingle": "News Shingle",
       "newerDriveway": "Newer Driveway",
-      "insulatedGarage": "Insulated Garage"    
+      "insulatedGarage": "Insulated Garage",
+      "balcony" : "Balcony",
+      "quartzCounterTops" : "Quartz Counter Tops",
+      "graniteCounterTops" : "Granite Counter Tops",
+      "vinylPlank" : "Vinyl Plank"      
     },
     "blog": {
       "category": {

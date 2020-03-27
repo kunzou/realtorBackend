@@ -60,7 +60,9 @@ public class Property {
   private String usage;
   private String holdType;
   private Collection<String> remaining;
+  private Collection<OtherFeature> OtherRemaining;
   private Collection<Highlight> features;
+  private Collection<OtherFeature> otherFeatures;
   private LocalDateTime openHouseDate;
 
   public static final Comparator<Property> HOME_PAGE_LIST_COMPARATOR = Comparator.comparing(Property::getPropertyStatus).thenComparing(Property::getOnMarketSince, Comparator.nullsLast(Comparator.reverseOrder()));
@@ -84,6 +86,20 @@ public class Property {
       features = Collections.emptySet();
     }
     return features;
+  }
+
+  public Collection<OtherFeature> getOtherFeatures() {
+    if(otherFeatures == null) {
+      otherFeatures = Collections.emptySet();
+    }
+    return otherFeatures;
+  }
+
+  public Collection<OtherFeature> getOtherRemaining() {
+    if(OtherRemaining == null) {
+      OtherRemaining = Collections.emptySet();
+    }
+    return OtherRemaining;
   }
 
   public Collection<String> getRemaining() {

@@ -1,7 +1,5 @@
 package kun.dev.springBootAngular.Domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public enum PropertyStatus {
 	SALE("Sale"),
 	SOLD("Sold"),

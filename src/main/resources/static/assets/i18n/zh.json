@@ -162,7 +162,11 @@
       "newShingle": "新房顶",
       "newsShingle": "较新房顶",
       "newerDriveway": "较新车道",
-      "insulatedGarage": "车库保温"      
+      "insulatedGarage": "车库保温", 
+      "balcony" : "阳台",
+      "quartzCounterTops" : "石英台面",
+      "graniteCounterTops" : "大理石台面",
+      "vinylPlank" : "Vinyl Plank 地面"       
     },
     "blog": {
       "category": {
