@@ -130,7 +130,7 @@ public class PropertyServiceImpl implements PropertyService {
     propertyCard.setArea(property.getArea());
     propertyCard.setBrief(property.getBrief());
     if(property.getPropertyStatus().equals(PropertyStatus.SOLD.toString())) {
-      propertyCard.setTag(new Description("卖了!", "SOLD!"));
+      propertyCard.setTag(property.getTag());
     }
     return propertyCard;
   }
