@@ -106,7 +106,6 @@ public class PropertyServiceImpl implements PropertyService {
   @Override
   public Collection<PropertyCard> getHomePageCards() {
     Query query = new Query();
-    query.addCriteria(Criteria.where("propertyStatus").in(PropertyStatus.SOLD.toString(), PropertyStatus.SALE.toString()));
     query.addCriteria(Criteria.where("displayedOnHomePage").is(true));
     return mongoTemplate.find(query, Property.class).stream()
         .sorted(Property.HOME_PAGE_LIST_COMPARATOR)
