@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import kun.dev.springBootAngular.Domain.Property;
 import kun.dev.springBootAngular.Domain.PropertyCard;
+import kun.dev.springBootAngular.Domain.Slide;
 
 public interface PropertyService {
 	Collection<Property> findAll();
@@ -19,4 +20,5 @@ public interface PropertyService {
   Collection<PropertyCard> getPropertyCards();
   Collection<PropertyCard> getOpenHouseCards();
   Collection<PropertyCard> getHomePageCards();
+  Collection<Slide> getHomePageSlides();
 }

@@ -1,14 +1,11 @@
 package kun.dev.springBootAngular.service;
 
 import java.util.Collection;
-import java.util.Comparator;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import kun.dev.springBootAngular.Domain.Description;
-import kun.dev.springBootAngular.Domain.Property;
-import kun.dev.springBootAngular.Domain.PropertyCard;
-import kun.dev.springBootAngular.Domain.PropertyStatus;
+import kun.dev.springBootAngular.Domain.*;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Primary;
@@ -68,7 +65,7 @@ public class PropertyServiceImpl implements PropertyService {
 
   @Override
   public Property update(Property property) {
-    Property persistedProperty = findById(property.getId()); //todo error handling
+//    Property persistedProperty = findById(property.getId()); //todo error handling
 
 //    if(persistedProperty.getVersion().equals(property.getVersion())) {
     updateGeocode(property);
@@ -113,7 +110,57 @@ public class PropertyServiceImpl implements PropertyService {
         .collect(Collectors.toList());
   }
 
-  PropertyCard toPropertyCard(Property property) {
+  @Override
+  public Collection<Slide> getHomePageSlides() {
+    Collection<Slide> slides;
+    Collection<Property> properties = findSale();
+    if(!properties.isEmpty()) {
+      slides = properties.stream()
+        .map(this::createSlides)
+        .flatMap(Collection::stream)
+        .collect(Collectors.toList());
+    } else {
+      slides = findSold().stream()
+        .map(this::createSlideFromSold)
+        .filter(Objects::nonNull)
+        .collect(Collectors.toList());
+    }
+
+    return slides;
+  }
+
+  private Collection<Slide> createSlides(Property property) {
+    return property.getAdditionalImages().stream()
+      .map(image -> createSlide(property, image))
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
+  }
+
+  private Slide createSlideFromSold(Property property) {
+    return createSlide(property, property.getPrimaryImage());
+  }
+
+  private Collection<Property> findSold() {
+    Query query = new Query();
+    query.addCriteria(Criteria.where("propertyStatus").in(PropertyStatus.SOLD.toString()));
+    query.addCriteria(Criteria.where("hide").is(false));
+    return mongoTemplate.find(query, Property.class);
+  }
+
+  private Slide createSlide(Property property, Image image) {
+    if(image == null) {
+      return null;
+    }
+    Slide slide = new Slide();
+    slide.setImage(image.getHugeLink()!=null?image.getHugeLink():image.getLink());
+    slide.setOpenHouse(property.getOpenHouseDate());
+    slide.setId(property.getId());
+    slide.setPrice(property.getAskingPrice());
+    slide.setText(property.getAddress());
+    return slide;
+  }
+
+  private PropertyCard toPropertyCard(Property property) {
     PropertyCard propertyCard = new PropertyCard();
     propertyCard.setId(property.getId());
     propertyCard.setPrimaryImage(property.getPrimaryImage());
@@ -134,7 +181,7 @@ public class PropertyServiceImpl implements PropertyService {
     return propertyCard;
   }
 
-  void updateGeocode(Property property) {
+  private void updateGeocode(Property property) {
     if(property.getId() == null || !StringUtils.equals(Optional.ofNullable(findById(property.getId())).map(Property::getAddress).orElse(null), property.getAddress())) {
       property.setLocation(geocodeService.getGeocode(property.getAddress()));
     }

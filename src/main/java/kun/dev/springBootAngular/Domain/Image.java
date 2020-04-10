@@ -10,6 +10,7 @@ public class Image {
   private String smallLink;
   private String mediumLink;
   private String largeLink;
+  private String hugeLink;
 
   public Image() {
   }
@@ -18,10 +19,11 @@ public class Image {
     this.link = link;
   }
 
-  public Image(String link, String smallLink, String mediumLink, String largeLink) {
+  public Image(String link, String smallLink, String mediumLink, String largeLink, String hugeLink) {
     this.link = link;
     this.smallLink = smallLink;
     this.mediumLink = mediumLink;
     this.largeLink = largeLink;
+    this.hugeLink = hugeLink;
   }
 }

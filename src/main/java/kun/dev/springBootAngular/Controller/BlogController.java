@@ -29,7 +29,6 @@ public class BlogController {
 
   @GetMapping("/{id}")
   public Blog getBlogById(@PathVariable("id") String id) {
-    logger.info("getBlogById");
     return blogService.findById(id);
   }
 

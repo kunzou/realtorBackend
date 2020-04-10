@@ -19,13 +19,11 @@ public class UserController {
 
   @GetMapping("/owner")
   public User getOwner() {
-    logger.info("getOwner");
     return userService.getOwner();
   }
 
   @PutMapping("")
   public User updateProperty(@RequestBody User user) {
-    logger.info("updateProperty" + user);
     return userService.update(user);
   }
 }

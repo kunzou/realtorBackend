@@ -44,7 +44,8 @@ public class ImgurService {
       link,
       appendSuffixToImage(link, "t"),
       appendSuffixToImage(link, "m"),
-      appendSuffixToImage(link, "l")
+      appendSuffixToImage(link, "l"),
+      appendSuffixToImage(link, "h")
     );
   }
 
