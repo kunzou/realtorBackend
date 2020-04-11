@@ -55,4 +55,16 @@ public class Blog {
     }
     return videoCaption;
   }
+
+  public Description getTitle() {
+    return title==null?new Description():title;
+  }
+
+  public Description getContent() {
+    return content==null?new Description():content;
+  }
+
+  public Description getBrief() {
+    return brief==null?new Description():brief;
+  }
 }
