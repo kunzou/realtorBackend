@@ -29,7 +29,7 @@ public class EmailController {
       emailService.sendEmail(emailDetail);
       return new ResponseEntity(new Description("消息发送成功，聃哥会尽快回复您", "Message sent successfully. Dan will answer you as soon as possible"),
           new HttpHeaders(), HttpStatus.OK);
-    } catch (MessagingException e) {
+    } catch (Exception e) {
       return new ResponseEntity(new Description("对不起消息发送失败。请直接电话，短信或微信联系聃哥", "Sorry email service failed. Please call, text or email Dan for assistance"),
           new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
