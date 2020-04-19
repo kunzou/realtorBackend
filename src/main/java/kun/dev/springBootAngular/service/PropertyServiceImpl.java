@@ -105,6 +105,7 @@ public class PropertyServiceImpl implements PropertyService {
     Query query = new Query();
     query.addCriteria(Criteria.where("displayedOnHomePage").is(true));
     return mongoTemplate.find(query, Property.class).stream()
+        .filter(property -> property.getPropertyStatus() != null)
         .sorted(Property.HOME_PAGE_LIST_COMPARATOR)
         .map(this::toPropertyCard)
         .collect(Collectors.toList());
