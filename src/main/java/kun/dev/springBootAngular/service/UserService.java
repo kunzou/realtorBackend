@@ -2,6 +2,7 @@ package kun.dev.springBootAngular.service;
 
 import kun.dev.springBootAngular.Domain.User;
 import kun.dev.springBootAngular.Domain.VisitHistory;
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -9,6 +10,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.*;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -30,12 +35,10 @@ public class UserService {
     User user = mongoTemplate.findOne(Query.query(Criteria.where("owner").is(true)), User.class);
     if(user != null) {
       user.setTotalVisits(user.getTotalVisits() + 1);
-      user.addVisitHistory(new VisitHistory(ZonedDateTime.now().withZoneSameInstant(ZoneId.of("US/Central")).toLocalDateTime()));
-      if(user.getVisitHistories().size() > 500) {
-        user.getVisitHistories().remove(500);
-      }
+
       user = mongoTemplate.save(user);
     }
+    mongoTemplate.save(new VisitHistory(ZonedDateTime.now().withZoneSameInstant(ZoneId.of("US/Central")).toLocalDateTime()));
 
     return user;
   }
@@ -44,6 +47,25 @@ public class UserService {
     user = mongoTemplate.save(user);
 
     return user;
+  }
+
+  public List<VisitHistory> getVisitHistory() {
+    List<VisitHistory> histories = mongoTemplate.findAll(VisitHistory.class);
+
+    histories.stream()
+      .filter(visit -> isOverTwoMonths(visit.getVisitDateTime()))
+      .forEach(mongoTemplate::remove);
+
+    List<VisitHistory> returnList = histories.stream()
+      .filter(visit -> !isOverTwoMonths(visit.getVisitDateTime()))
+      .collect(Collectors.toList());
+
+    Collections.reverse(returnList);
+    return returnList;
+  }
+
+  boolean isOverTwoMonths(LocalDateTime localDateTime) {
+    return Period.between(localDateTime.toLocalDate(), LocalDateTime.now().toLocalDate()).getMonths() > 2;
   }
 
 }

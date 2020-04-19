@@ -4,8 +4,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,6 +16,9 @@ import java.time.LocalDateTime;
 @ToString
 @EqualsAndHashCode
 public class VisitHistory {
+  @Id
+  @Indexed(unique = true)
+  private String id;
   LocalDateTime visitDateTime;
 
   public VisitHistory() {

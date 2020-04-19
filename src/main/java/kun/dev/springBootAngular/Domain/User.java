@@ -37,7 +37,6 @@ public class User {
   private String facebook;
   private String instagram;
   private String youtube;
-  private List<VisitHistory> visitHistories;
   private Integer totalVisits;
 
   public Description getDisplayName() {
@@ -54,14 +53,6 @@ public class User {
 
   public Description getSaleService() {
     return saleService == null? new Description():saleService;
-  }
-
-  public List<VisitHistory> getVisitHistories() {
-    return this.visitHistories != null?this.visitHistories:new ArrayList<>();
-  }
-
-  public void addVisitHistory(VisitHistory visitHistory) {
-    getVisitHistories().add(0, visitHistory);
   }
 
   public int getTotalVisits() {

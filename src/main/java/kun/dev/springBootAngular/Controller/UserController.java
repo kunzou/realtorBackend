@@ -2,10 +2,13 @@ package kun.dev.springBootAngular.Controller;
 
 import kun.dev.springBootAngular.Domain.Property;
 import kun.dev.springBootAngular.Domain.User;
+import kun.dev.springBootAngular.Domain.VisitHistory;
 import kun.dev.springBootAngular.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -22,8 +25,13 @@ public class UserController {
     return userService.getOwner();
   }
 
+  @GetMapping("/visitHistory")
+  public List<VisitHistory> getVisitHistory() {
+    return userService.getVisitHistory();
+  }
+
   @PutMapping("")
-  public User updateProperty(@RequestBody User user) {
+  public User updateUser(@RequestBody User user) {
     return userService.update(user);
   }
 }
