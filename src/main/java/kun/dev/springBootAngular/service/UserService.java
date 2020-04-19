@@ -1,11 +1,13 @@
 package kun.dev.springBootAngular.service;
 
 import kun.dev.springBootAngular.Domain.User;
+import kun.dev.springBootAngular.Domain.VisitHistory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.time.*;
 import java.util.Collection;
 
 @Service
@@ -25,12 +27,20 @@ public class UserService {
   }
 
   public User getOwner() {
-    return mongoTemplate.findOne(Query.query(Criteria.where("owner").is(true)), User.class);
+    User user = mongoTemplate.findOne(Query.query(Criteria.where("owner").is(true)), User.class);
+    if(user != null) {
+      user.setTotalVisits(user.getTotalVisits() + 1);
+      user.addVisitHistory(new VisitHistory(ZonedDateTime.now().withZoneSameInstant(ZoneId.of("US/Central")).toLocalDateTime()));
+      if(user.getVisitHistories().size() > 500) {
+        user.getVisitHistories().remove(500);
+      }
+      user = mongoTemplate.save(user);
+    }
+
+    return user;
   }
 
   public User update(User user) {
-//    User saveduser = findById(user.getId());
-//    user.setVersion(user.getVersion()+1);
     user = mongoTemplate.save(user);
 
     return user;
